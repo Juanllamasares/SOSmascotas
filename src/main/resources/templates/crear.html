@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>SOSmascotas</title>
+  </head>
+  <body>
+		<header th:insert="fragments/navbar.html :: header"> </header>	
+		<h1>Reportar mascota</h1>
+		<div class="container">
+			<form th:action="@{/reportes/guardarReporte}" method="post" class="form-group" th:object=${reporte}>
+				<div class="custom-file mb-4">
+			        <label for="foto">Foto</label>
+				    <input type="file" name="foto" class="custom-file-input" id="foto"> 
+				    <label class="custom-file-label"for="foto">foto</label>
+			    </div>	
+			    <div>
+					<label for="estado">Estado</label>
+					<select name="estado" th:field="*{estado}">
+					   <option value="PERDIDA">Perdida</option>
+					   <option value="ABANDONADA">Abandonada</option>
+					   <option value="EN_TRANSITO">Tránsito</option>
+					   <option value="EN_ADOPCION">En adopción</option>
+					</select>
+								
+			   </div>
+			   <div class="form-group">
+					<label for="ubicacion">Ubicacion de la mascota</label>
+					<input type="text" class="form-control" id="ubicacion" name="ubicacion" th:field="*{mascota.ubicacion}"/>				
+				</div>
+				<div class="form-group">
+					<label for="descripcion">Descripcion de la mascota</label>
+					<input type="text" class="form-control" id="descripcion" name="descripcion" th:field="*{mascota.descripcion}"/>				
+				</div>
+			   <div class="form-group">
+				 <label for="fechaCreacion">Fecha de Creacion</label>
+				 <input class="form-control" type="date" value="${fechaCreacion}" id="fechaCreacion" name="fechaCreacion" th:field="*{fechaCreacion}">
+				</div>	
+			<h2>Contacto</h2>
+			   <div class="form-group">
+					<label for="telefono">Nombre</label>
+					<input type="text" class="form-control" id="nombre" name="nombre" th:field="*{contacto.nombre}"/>
+			   </div>
+			   <div class="form-group">
+					<label for="telefono">Telefono</label>
+					<input type="text" class="form-control" id="telefono" name="telefono" th:field="*{contacto.telefono}"/>
+			   </div>
+			   <div class="form-group">
+					<label for="whatsApp">WhatsApp</label>
+					<input type="text" class="form-control" id="whatsApp" name="whatsApp" th:field="*{contacto.whatsApp}"/>
+			   </div>
+		    <button type="submit" class="btn btn-primary">Reportar</button>	
+		    </form>
+		</div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>
